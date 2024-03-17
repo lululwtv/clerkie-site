@@ -16,7 +16,13 @@ const config: Config = {
       colors: {
         theme: "#091928",
         menu: "#424242",
-        bordercolor: "#D7D7D7s"
+        textcolor: "#D7D7D7",
+        click: "#424242",
+        bordercolor: "#ABABAB",
+        cfbg: '#DFEFFF',
+        cft: "#3399FF",
+        scfbg: "#DCFFE6",
+        scft: "#19B444",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"]

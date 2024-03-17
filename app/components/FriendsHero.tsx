@@ -55,8 +55,11 @@ const FriendHero = () => {
       <div className='flex-grow w-[67.8%] flex flex-col'>
         <div>
           <div className='flex flex-row'>
-            <button className={`px-[20px] py-[8.5px] mt-[46px] border-bordercolor rounded-[21px] border-[1px]
-              ${clicked ? 'bg-click' : 'bg-white'} transition-all duration-300ms`}
+            <button className={`px-[20px] py-[8.5px] mt-[46px]  rounded-[21px]
+              ${clicked 
+                  ? 'bg-click border-[1px] border-click' 
+                  : 'bg-white border-bordercolor border-[1px]'}
+              transition-all duration-300ms`}
               onClick={() => toggleClicked(!clicked)}>
               {clicked  
                 ? <img src={clickedicon.src} className='h-[20px] w-[19px]' />

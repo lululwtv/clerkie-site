@@ -6,7 +6,7 @@
     { "Name": "Jack Wilson", "Status": "Close Friends", "Email": "jack.wilson@example.com", "Phone": "(567)-892-1234" },
     { "Name": "Jenny Brown", "Status": "Super Close Friends", "Email": "jenny.brown@example.com", "Phone": "(678)-921-2345" },
     { "Name": "Jim Taylor", "Status": "", "Email": "jim.taylor@example.com", "Phone": "(789)-212-3456" },
-    { "Name": "Jill Evans", "Status": "", "Email": "jill.evans@example.com", "Phone": "(892)-123-4567" },
+    { "Name": "Jill Evans", "Status": "Close Friends", "Email": "jill.evans@example.com", "Phone": "(892)-123-4567" },
     { "Name": "Amy Martinez", "Status": "", "Email": "amy.martinez@example.com", "Phone": "(921)-234-5678" },
     { "Name": "Andy Nguyen", "Status": "Close Friends", "Email": "andy.nguyen@example.com", "Phone": "(212)-345-6789" },
     { "Name": "Amanda Miller", "Status": "", "Email": "amanda.miller@example.com", "Phone": "(123)-456-7892" },

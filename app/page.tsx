@@ -1,14 +1,15 @@
 import React from 'react'
-import {NavBar} from './components'
+import {HomeBar, NavBar, HomeHero} from './components'
 
 const page = () => {
   return (
-    <div className='flex flex-col'>
-      <div className=''>
+    <div className='flex flex-row h-screen'>
+      <div className='w-[250px]'>
         <NavBar/>
       </div>
-      <div className='bg-white text-black width-1/3'>
-        <h1>Content</h1>
+      <div className='flex flex-grow flex-col'>
+          <HomeBar/>
+          <HomeHero/>
       </div>
     </div>
   )

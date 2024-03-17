@@ -5,5 +5,5 @@ import home from "./home.svg";
 export {
     clerkie,
     friends,
-    home
+    home,
 }

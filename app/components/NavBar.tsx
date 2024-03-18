@@ -11,7 +11,8 @@ const NavBar = () => {
   const [page, setPage] = useState<string>(path.split('/')[1] ? path.split('/')[1] : 'home');
 
   return (
-    <nav className="w-[40%] h-full flex flex-col justify-between items-center navbar bg-theme fixed transition-all duration-300ms" style={{overflowX: 'hidden', maxWidth: '250px', maxHeight: '100vh'}}>
+    <nav className="w-[40%] h-full flex flex-col justify-between items-center navbar bg-theme
+      fixed transition-all duration-300ms" style={{overflowX: 'hidden', maxWidth: '250px', maxHeight: '100vh'}}>
       <ul className="list-none flex flex-col fixed justify-center flex-1 font-inter">
         <div className='h-[20px] w-full pt-[32px] text-center text-white mr-0'>
           <div className='flex text-[16px] font-semibold'>

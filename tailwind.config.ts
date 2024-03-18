@@ -23,6 +23,7 @@ const config: Config = {
         cft: "#3399FF",
         scfbg: "#DCFFE6",
         scft: "#19B444",
+        checked: "#3399FF",
       },
       fontFamily: {
         inter: ["Inter", "sans-serif"]

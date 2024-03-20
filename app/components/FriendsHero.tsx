@@ -221,7 +221,7 @@ const FriendHero = () => {
           <div className='flex flex-col items-center mt-[30px]'>
             <img src={avatar.src} className='h-[100px] w-[100px] mb-[25px]' />
             <h2 className='font-inter font-bold text-black text-[24px]'>{selectedFriend?.Name}</h2>
-            <FriendStatus Status={selectedFriend?.Status} />
+            <FriendStatus Status={ selectedFriend === undefined ? "" : selectedFriend?.Status} />
             <div className='flex flex-row mt-[6px] flex items-center text-bordercolor'>
               <p className='text-[14px]'>{selectedFriend?.Email}</p>
               <span className='bg-bordercolor h-[4px] w-[4px] rounded-[50%] ml-[7px]'/>
@@ -230,7 +230,7 @@ const FriendHero = () => {
           </div>
         </div>}
       
-      {/* Right column */}
+      {/* Right column */} 
       <div className='w-[16.1%] h-full'></div>
 
     </div>

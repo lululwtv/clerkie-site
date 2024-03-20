@@ -5,6 +5,7 @@ import filtericon from "./filter.svg";
 import clickedicon from "./clicked filter.svg";
 import close from "./close.svg";
 import check from "./check.svg";
+import avatar from "./avatar.jpg";
 
 export {
     clerkie,
@@ -13,5 +14,6 @@ export {
     filtericon,
     clickedicon,
     close,
-    check
+    check,
+    avatar
 }

@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { filtericon, clickedicon, close } from '../assets';
-import { CheckBox } from '.';
+import { filtericon, clickedicon, close, avatar } from '../assets';
+import { FriendStatus } from '.';
 
 type Friend = {
   Name: string;
@@ -21,6 +21,8 @@ const FriendHero = () => {
   const [loading, setLoading] = useState<boolean>(true); // loading state
 
   const [filteredFriends, setFilteredFriends] = useState<Friend[]>([]); // filtered friends list
+  const [selectedFriend, setSelectedFriend] = useState<Friend>();
+  const [isFriendSelected, setIsFriendSelected] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchFriends = async () => {
@@ -83,7 +85,8 @@ const FriendHero = () => {
       {/* Left column */}
       <div className='w-[16.1%] max-w-[310px] h-full'></div>
 
-      {/* Middle column */}
+      {/* Middle column if no friend is selected*/}
+      {!isFriendSelected &&
       <div className='flex-grow w-[67.8%] flex flex-col'>
 
 
@@ -160,17 +163,15 @@ const FriendHero = () => {
             {filteredFriends.map((friend) => {
               return <div className='w-full bg-white h-[114px] border-[1px]
                   border-textcolor my-[15px] rounded-[6px] flex items-center'>
-                <li key={friend.Name}>
+                <li key={friend.Name}
+                  onClick={() => {
+                    setIsFriendSelected(true);
+                    setSelectedFriend(friend)}}
+                  className='hover:cursor-pointer'>
                   <div className='mb-[6px]'>
                     <div className='flex flex-row'>
                       <h2 className='font-inter font-bold text-black text-[16px] ml-[30px]'>{friend.Name}</h2>
-                      {friend.Status == "Close Friends"
-                        ? <div className='flex bg-cfbg text-cft ml-[10px] rounded-full ml-[10px]
-                          text-[12px] font-semibold px-[8.75px] py-[3px]'>Close Friends</div>
-                        : friend.Status == "Super Close Friends"
-                          ? <div className='flex bg-scfbg text-scft ml-[10px] rounded-full ml-[10px]
-                            text-[12px] font-semibold px-[8.75px] py-[3px]'>Super Close Friends</div>
-                          : null}
+                      <FriendStatus Status={friend.Status} />
                     </div>
                     <div className='flex flex-row mt-[6px] flex items-center text-bordercolor'>
                       <p className='ml-[30px] text-[14px]'>{friend.Email}</p>
@@ -183,17 +184,18 @@ const FriendHero = () => {
             })}
           </ul>
 
+          {/* Loading components */}
           {loading && 
           <div className='flex justify-center flex-col w-full items-center h-full'>
             {[...Array(5)].map((_, i) => (
             <div className='w-full bg-white h-[114px] border-[1px] border-textcolor my-[15px] rounded-[6px] flex items-center justify-between'>
               <div className='w-full ml-[30px] flex flex-col'>
-                <div className='h-[18px] w-[28.1%] bg-gradient-to-r from-[#EAEAEA] to-[#ffffff] rounded-[27px] mb-[5px]'></div>
-                <div className='h-[18px] w-[32.34%] bg-gradient-to-r from-[#EAEAEA] to-[#ffffff] rounded-[27px] mt-[5px]'></div>
+                <div className='h-[18px] animate-pulse w-[28.1%] bg-gradient-to-r from-[#EAEAEA] to-[#ffffff] rounded-[27px] mb-[5px]'></div>
+                <div className='h-[18px] animate-pulse w-[32.34%] bg-gradient-to-r from-[#EAEAEA] to-[#ffffff] rounded-[27px] mt-[5px]'></div>
               </div>
               <div className='mr-[30px] w-full flex flex-col items-end'>
-                <div className='h-[18px] w-[28.1%] bg-gradient-to-r from-[#ffffff] to-[#EAEAEA] rounded-[27px] mb-[5px]'></div>
-                <div className='h-[18px] w-[32.34%] bg-gradient-to-r from-[#ffffff] to-[#EAEAEA] rounded-[27px] mt-[5px]'></div>
+                <div className='h-[18px] animate-pulse w-[28.1%] bg-gradient-to-r from-[#ffffff] to-[#EAEAEA] rounded-[27px] mb-[5px]'></div>
+                <div className='h-[18px] animate-pulse w-[32.34%] bg-gradient-to-r from-[#ffffff] to-[#EAEAEA] rounded-[27px] mt-[5px]'></div>
               </div>
             </div>
             ))}
@@ -202,6 +204,31 @@ const FriendHero = () => {
 
         </div>
       </div>
+      }
+
+      {/* Middle column if friend is selected */}
+      {isFriendSelected &&
+        <div className='flex-grow w-[67.8%] flex flex-col'>
+          <div>
+            <button className='bg-menu hover:bg-theme text-white px-[10px] rounded-[6px] mt-10'
+              onClick={() => {
+                setIsFriendSelected(false);
+                setSelectedFriend(undefined);
+              }}>
+              Back
+            </button>
+          </div>
+          <div className='flex flex-col items-center mt-[30px]'>
+            <img src={avatar.src} className='h-[100px] w-[100px] mb-[25px]' />
+            <h2 className='font-inter font-bold text-black text-[24px]'>{selectedFriend?.Name}</h2>
+            <FriendStatus Status={selectedFriend?.Status} />
+            <div className='flex flex-row mt-[6px] flex items-center text-bordercolor'>
+              <p className='text-[14px]'>{selectedFriend?.Email}</p>
+              <span className='bg-bordercolor h-[4px] w-[4px] rounded-[50%] ml-[7px]'/>
+              <p className='ml-[7px] text-[14px]'>{selectedFriend?.Phone}</p>
+            </div>
+          </div>
+        </div>}
       
       {/* Right column */}
       <div className='w-[16.1%] h-full'></div>

@@ -4,6 +4,7 @@ import HomeHero from './HomeHero';
 import FriendsBar from './FriendsBar';
 import FriendsHero from './FriendsHero';
 import CheckBox from './CheckBox';
+import FriendStatus from './FriendStatus';
 
 export {
     NavBar,
@@ -11,5 +12,6 @@ export {
     HomeHero,
     FriendsBar,
     FriendsHero,
-    CheckBox
+    CheckBox,
+    FriendStatus
 }

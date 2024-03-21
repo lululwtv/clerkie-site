@@ -24,34 +24,34 @@ const FriendHero = () => {
   const [selectedFriend, setSelectedFriend] = useState<Friend>();
   const [isFriendSelected, setIsFriendSelected] = useState<boolean>(false);
 
-  useEffect(() => {
-    const fetchFriends = async () => {
-      const url = '/api/friends';
+  const fetchFriends = async () => {
+    const url = '/api/friends';
 
-      const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: "include",
-      });
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: "include",
+    });
 
-      if (response.status === 401) {
-        router.push('/');
-      }
-
-      if (response.ok) {
-        const data = await response.json();
-        setTimeout(() => {
-          setFriends(data);
-          setFilteredFriends(data);
-          setLoading(false);
-        }, 1000);
-      } else {
-        console.error('Error fetching friends');
-      }
+    if (response.status === 401) {
+      router.push('/');
     }
 
+    if (response.ok) {
+      const data = await response.json();
+      setTimeout(() => {
+        setFriends(data);
+        setFilteredFriends(data);
+        setLoading(false);
+      }, 1000);
+    } else {
+      console.error('Error fetching friends');
+    }
+  }
+
+  useEffect(() => {
     fetchFriends();
   }, [router]);
 
@@ -76,8 +76,6 @@ const FriendHero = () => {
     }
     toggleClicked(false);
   };
-  
-  
 
   return (
     <div className='columns-3 flex-row bg-white flex'>
@@ -210,7 +208,7 @@ const FriendHero = () => {
       {isFriendSelected &&
         <div className='flex-grow w-[67.8%] flex flex-col'>
           <div>
-            <button className='bg-menu hover:bg-theme text-white px-[10px] rounded-[6px] mt-10'
+            <button className='bg-bordercolor hover:bg-menu text-white px-[10px] rounded-[6px] mt-10'
               onClick={() => {
                 setIsFriendSelected(false);
                 setSelectedFriend(undefined);
